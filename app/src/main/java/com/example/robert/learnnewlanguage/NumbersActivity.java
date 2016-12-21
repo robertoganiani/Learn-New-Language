@@ -31,16 +31,6 @@ public class NumbersActivity extends AppCompatActivity {
         numbersToLearn.add(new Word("Eight", "Восемь", R.drawable.number_eight));
         numbersToLearn.add(new Word("Nine", "Девять", R.drawable.number_nine));
         numbersToLearn.add(new Word("Ten", "Десять", R.drawable.number_ten));
-//        numbersToLearn.add(new Word("Eleven", "Одиннадцать"));
-//        numbersToLearn.add(new Word("Twelve", "Двенадцать"));
-//        numbersToLearn.add(new Word("Thirteen", "Тринадцать"));
-//        numbersToLearn.add(new Word("Fourteen", "Четырнадцать"));
-//        numbersToLearn.add(new Word("Fifteen", "Пятнадцать"));
-//        numbersToLearn.add(new Word("Sixteen", "Шестнадцать"));
-//        numbersToLearn.add(new Word("Seventeen", "Семнадцать"));
-//        numbersToLearn.add(new Word("Eighteen", "Восемнадцать"));
-//        numbersToLearn.add(new Word("Nineteen", "Девятнадцать"));
-//        numbersToLearn.add(new Word("Twenty", "Двадцать"));
 
         WordAdapter adapter = new WordAdapter(this, numbersToLearn, R.color.category_numbers);
         ListView listView = (ListView) findViewById(R.id.word_list);

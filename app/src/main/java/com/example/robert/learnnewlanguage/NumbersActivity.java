@@ -2,10 +2,8 @@ package com.example.robert.learnnewlanguage;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class NumbersActivity extends AppCompatActivity {
@@ -15,7 +13,7 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
 
-        List<Word> numbersToLearn = new ArrayList<Word>();
+        ArrayList<Word> numbersToLearn = new ArrayList<Word>();
 
         numbersToLearn.add(new Word("One", "Один"));
         numbersToLearn.add(new Word("Two", "Два"));
@@ -38,7 +36,7 @@ public class NumbersActivity extends AppCompatActivity {
         numbersToLearn.add(new Word("Nineteen", "Девятнадцать"));
         numbersToLearn.add(new Word("Twenty", "Двадцать"));
 
-        WordAdapter<Word> adapter = new WordAdapter(this, R.layout.list_item, numbersToLearn);
+        WordAdapter adapter = new WordAdapter(this, numbersToLearn);
         ListView listView = (ListView) findViewById(R.id.numbers_list);
         listView.setAdapter(adapter);
 

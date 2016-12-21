@@ -48,7 +48,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
         ImageView imageView = (ImageView) listItemView.findViewById(R.id.image_view);
 
-//        if currentWord doesn't have image hide it
+        /*if currentWord doesn't have image hide it*/
         if (currentWord.hasImage()) {
 
             imageView.setImageResource(currentWord.getmImageResourceId());
@@ -57,6 +57,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
             imageView.setVisibility(View.GONE);
         }
 
+        /*set background*/
         View textContainer = listItemView.findViewById(R.id.text_container);
         int color = ContextCompat.getColor(getContext(), mColorResourceId);
         textContainer.setBackgroundColor(color);

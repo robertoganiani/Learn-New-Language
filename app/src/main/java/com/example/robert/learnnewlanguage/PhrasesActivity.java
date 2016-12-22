@@ -1,7 +1,10 @@
 package com.example.robert.learnnewlanguage;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -13,6 +16,8 @@ import java.util.ArrayList;
 
 
 public class PhrasesActivity extends AppCompatActivity {
+
+    private MediaPlayer mMediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,15 @@ public class PhrasesActivity extends AppCompatActivity {
         WordAdapter adapter = new WordAdapter(this, colorsToLearn, R.color.category_phrases);
         ListView listView = (ListView) findViewById(R.id.word_list);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Word word = colorsToLearn.get(position);
+                mMediaPlayer = MediaPlayer.create(PhrasesActivity.this, word.getmAudioResourceId());
+                mMediaPlayer.start();
+            }
+        });
 
     }
 }

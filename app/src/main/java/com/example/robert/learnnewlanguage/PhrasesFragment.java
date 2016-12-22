@@ -1,23 +1,24 @@
 package com.example.robert.learnnewlanguage;
 
+
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
-
 /**
- * Created by rob on 12/20/16.
+ * A simple {@link Fragment} subclass.
  */
-
-
-public class PhrasesActivity extends AppCompatActivity {
+public class PhrasesFragment extends Fragment {
 
     private MediaPlayer mMediaPlayer;
     private AudioManager mAudioManager;
@@ -37,19 +38,24 @@ public class PhrasesActivity extends AppCompatActivity {
         }
     };
 
-    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
-        @Override
-        public void onCompletion(MediaPlayer mediaPlayer) {
-            releaseMediaPlayer();
-        }
-    };
+    private MediaPlayer.OnCompletionListener mCompletionListener =
+            new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    releaseMediaPlayer();
+                }
+            };
+
+    public PhrasesFragment() {
+        // Required empty public constructor
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.word_list);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.word_list, container, false);
 
-        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
 
         final ArrayList<Word> colorsToLearn = new ArrayList<Word>();
         colorsToLearn.add(new Word("What's your name?", "Как тебя зовут?", R.raw.kak_tebia_zovut));
@@ -73,8 +79,8 @@ public class PhrasesActivity extends AppCompatActivity {
         colorsToLearn.add(new Word("Do you speak English?", "Вы говорите по-английски?", R.raw.vi_govorite_po_angliski));
         colorsToLearn.add(new Word("How do you say ... in Russian?", "Как сказать ... по-русски?", R.raw.kak_skazat_poruski));
 
-        WordAdapter adapter = new WordAdapter(this, colorsToLearn, R.color.category_phrases);
-        ListView listView = (ListView) findViewById(R.id.word_list);
+        WordAdapter adapter = new WordAdapter(getActivity(), colorsToLearn, R.color.category_phrases);
+        ListView listView = (ListView) rootView.findViewById(R.id.word_list);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -88,17 +94,18 @@ public class PhrasesActivity extends AppCompatActivity {
                         AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
 
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-                    mMediaPlayer = MediaPlayer.create(PhrasesActivity.this, word.getmAudioResourceId());
+                    mMediaPlayer = MediaPlayer.create(getActivity(), word.getmAudioResourceId());
                     mMediaPlayer.start();
                     mMediaPlayer.setOnCompletionListener(mCompletionListener);
                 }
             }
         });
 
+        return rootView;
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         releaseMediaPlayer();
     }

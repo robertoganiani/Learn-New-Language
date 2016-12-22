@@ -11,18 +11,21 @@ public class Word {
     private String mEnglishVersion;
     private String mRussianVersion;
     private int mImageResourceId = NO_IMAGE;
+    private int mAudioResourceId;
 
     private static final int NO_IMAGE = -1;
 
-    public Word(String mEnglishVersion, String mRussianVersion) {
+    public Word(String mEnglishVersion, String mRussianVersion, int audioResourceId) {
         this.mEnglishVersion = mEnglishVersion;
         this.mRussianVersion = mRussianVersion;
+        this.mAudioResourceId = audioResourceId;
     }
 
-    public Word(String mEnglishVersion, String mRussianVersion, int mImageResourceId) {
+    public Word(String mEnglishVersion, String mRussianVersion, int mImageResourceId, int audioResourceId) {
         this.mEnglishVersion = mEnglishVersion;
         this.mRussianVersion = mRussianVersion;
         this.mImageResourceId = mImageResourceId;
+        this.mAudioResourceId = audioResourceId;
     }
 
     public String getmEnglishVersion() {
@@ -35,6 +38,10 @@ public class Word {
 
     public int getmImageResourceId() {
         return mImageResourceId;
+    }
+
+    public int getmAudioResourceId() {
+        return mAudioResourceId;
     }
 
     public boolean hasImage() {

@@ -24,18 +24,18 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
-        ArrayList<Word> numbersToLearn = new ArrayList<Word>();
+        final ArrayList<Word> numbersToLearn = new ArrayList<Word>();
 
-        numbersToLearn.add(new Word("One", "Один", R.drawable.number_one));
-        numbersToLearn.add(new Word("Two", "Два", R.drawable.number_two));
-        numbersToLearn.add(new Word("Three", "Три", R.drawable.number_three));
-        numbersToLearn.add(new Word("Four", "Четыре", R.drawable.number_four));
-        numbersToLearn.add(new Word("Five", "Пять", R.drawable.number_five));
-        numbersToLearn.add(new Word("Six", "Шесть", R.drawable.number_six));
-        numbersToLearn.add(new Word("Seven", "Семь", R.drawable.number_seven));
-        numbersToLearn.add(new Word("Eight", "Восемь", R.drawable.number_eight));
-        numbersToLearn.add(new Word("Nine", "Девять", R.drawable.number_nine));
-        numbersToLearn.add(new Word("Ten", "Десять", R.drawable.number_ten));
+        numbersToLearn.add(new Word("One", "Один", R.drawable.number_one, R.raw.number_one));
+        numbersToLearn.add(new Word("Two", "Два", R.drawable.number_two, R.raw.number_two));
+        numbersToLearn.add(new Word("Three", "Три", R.drawable.number_three, R.raw.number_three));
+        numbersToLearn.add(new Word("Four", "Четыре", R.drawable.number_four, R.raw.number_four));
+        numbersToLearn.add(new Word("Five", "Пять", R.drawable.number_five, R.raw.number_five));
+        numbersToLearn.add(new Word("Six", "Шесть", R.drawable.number_six, R.raw.number_six));
+        numbersToLearn.add(new Word("Seven", "Семь", R.drawable.number_seven, R.raw.number_seven));
+        numbersToLearn.add(new Word("Eight", "Восемь", R.drawable.number_eight, R.raw.number_eight));
+        numbersToLearn.add(new Word("Nine", "Девять", R.drawable.number_nine, R.raw.number_nine));
+        numbersToLearn.add(new Word("Ten", "Десять", R.drawable.number_ten, R.raw.number_ten));
 
         WordAdapter adapter = new WordAdapter(this, numbersToLearn, R.color.category_numbers);
         ListView listView = (ListView) findViewById(R.id.word_list);
